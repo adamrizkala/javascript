@@ -113,3 +113,18 @@ function sempitin() {
           	x--;
         }
     }
+
+    const dikt = document.getElementById("daftar-isi-kursus-tutup")
+    const bdi = document.getElementById("buka-daftar-isi")
+    const pdi = document.getElementById("penutup-daftar-isi")
+
+    bdi.addEventListener("click", bukatutupdaftarisi)
+  	pdi.addEventListener("click", bukatutupdaftarisi)
+  
+function bukatutupdaftarisi(){
+        if (dikt.id == "daftar-isi-kursus-tutup"){
+            dikt.id = "daftar-isi-kursus-buka"
+        } else {
+            dikt.id = "daftar-isi-kursus-tutup"
+        }
+    }
