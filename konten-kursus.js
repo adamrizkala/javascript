@@ -1,15 +1,28 @@
 const judul = document.title;
 const judulKursus = document.getElementById("judul-kursus")
-
-judulKursus.innerHTML = "<p>" + judul + "</p>"
-
 const halamanKe = document.getElementById("halaman-ke");
-  
-//Buka Tutup Sub-Menu
-  
 const subMenu = document.getElementById("sub-menu-tutup");
 const pembukaSubMenu = document.getElementById("pembuka-sub-menu");
 const penutupSubMenu = document.getElementById("penutup-sub-menu");
+const kepala = document.getElementById("kepala");
+const kepalaAnak = document.getElementById("kepala-anak");
+const logo = document.getElementById("logo");
+const navigasi = document.getElementById("navigasi");
+const luasin = document.getElementById("luasin");
+const konten = document.querySelectorAll(".konten-kursus")
+const audioMateri = document.querySelectorAll(".audio-materi")
+const next = document.getElementById("next")
+const prev = document.getElementById("prev")
+const suaraKlik = document.getElementById("suara-klik")
+let x = 0
+const y = konten.length - 1
+const dikt = document.getElementById("daftar-isi-kursus-tutup")
+const bdi = document.getElementById("buka-daftar-isi")
+const pdi = document.getElementById("penutup-daftar-isi")
+
+judulKursus.innerHTML = "<p>" + judul + "</p>"
+
+//Buka Tutup Sub-Menu
 
 pembukaSubMenu.addEventListener("click", submenubuka);
 function submenubuka() {
@@ -22,109 +35,112 @@ function submenututup() {
   
 //Luasin & Sempitin
 
-const kepala = document.getElementById("kepala");
-const kepalaAnak = document.getElementById("kepala-anak");
-const logo = document.getElementById("logo");
-const navigasi = document.getElementById("navigasi");
-const luasin = document.getElementById("luasin");
 luasin.addEventListener("click", sempitin);
   
+//Ubah CSS Bawaaan
+  
+konten[x].style.height = "100vh";
+kepala.style.transform = "scaleY(0)";
+kepala.style.transformOrigin = "top";
+kepalaAnak.style.transform = "scaleY(0)";
+kepalaAnak.style.transformOrigin = "top";
+logo.style.transform = "scale(0)";
+logo.style.transformOrigin = "top";
+navigasi.style.transform = "scale(0)";
+navigasi.style.transformOrigin = "top";
+luasin.style.top = "2.5vh";
+luasin.className = "fa-solid fa-down-left-and-up-right-to-center";
+halamanKe.style.top = "2.5vh";
+judulKursus.style.top = "2.5vh";
+  
+  
 function sempitin() {
-	if (luasin.className == "fa-solid fa-up-right-and-down-left-from-center") {
-		konten[x].style.height = "100vh";
-		kepala.style.transform = "scaleY(0)";
-		kepala.style.transformOrigin = "top";
-		kepalaAnak.style.transform = "scaleY(0)";
-		kepalaAnak.style.transformOrigin = "top";
-		logo.style.transform = "scale(0)";
-		logo.style.transformOrigin = "top";
-		navigasi.style.transform = "scale(0)";
-		navigasi.style.transformOrigin = "top";
-		luasin.style.top = "2.5vh";
-		luasin.className = "fa-solid fa-down-left-and-up-right-to-center";
-      	halamanKe.style.top = "2.5vh";
-      	judulKursus.style.top = "2.5vh";
-	} else {
-		konten[x].style.height = null;
-		kepala.style.transform = null;
-		kepalaAnak.style.transform = null;
-		logo.style.transform = null;
-		navigasi.style.transform = null;
-		luasin.style = null;
-		luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
-      	halamanKe.style.top = null;
-      	judulKursus.style.top = null;
-	}
+if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
+	konten[x].style.height = null;
+	kepala.style.transform = null;
+	kepalaAnak.style.transform = null;
+	logo.style.transform = null;
+	navigasi.style.transform = null;
+	luasin.style = null;
+	luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
+  	halamanKe.style.top = null;
+	judulKursus.style.top = null;
+} else {
+	konten[x].style.height = "100vh";
+	kepala.style.transform = "scaleY(0)";
+	kepala.style.transformOrigin = "top";
+	kepalaAnak.style.transform = "scaleY(0)";
+	kepalaAnak.style.transformOrigin = "top";
+	logo.style.transform = "scale(0)";
+	logo.style.transformOrigin = "top";
+	navigasi.style.transform = "scale(0)";
+	navigasi.style.transformOrigin = "top";
+	luasin.style.top = "2.5vh";
+	luasin.className = "fa-solid fa-down-left-and-up-right-to-center";
+  	halamanKe.style.top = "2.5vh";
+	judulKursus.style.top = "2.5vh";
+}
 }
 
 //Next & Prev
-
-	let konten = document.querySelectorAll(".konten-kursus")
-    let audioMateri = document.querySelectorAll(".audio-materi")
-    let next = document.getElementById("next")
-    let prev = document.getElementById("prev")
-    let suaraKlik = document.getElementById("suara-klik")
-    let x = 0
-    let y = konten.length - 1
     
-    halamanKe.innerHTML = "<p>" + (x+1) + "/" + konten.length + "</p>";
-    if (x == 1){
-    	audioMateri[1].play();
-    }
+halamanKe.innerHTML = "<p>" + (x+1) + "/" + konten.length + "</p>";
+if (x == 1){
+	audioMateri[1].play();
+}
   
-    next.addEventListener("click", n);
-    function n() {
-		if (x == y){
-            konten[x].style.display = "flex";
-        } else {
-            suaraKlik.play();
-          	audioMateri[x+1].play();
-          	audioMateri[x].pause();
-          	audioMateri[x].currentTime = 0;
-          	if (konten[x].style.height == "100vh") {
-                konten[x+1].style.height = "100vh"
-           	} else {
-           		konten[x+1].style.height = null
-           	}
-            konten[x].style.display = "none";
-            konten[x+1].style.display = "flex";
-          	halamanKe.innerHTML = "<p>" + (x+2) + "/" + konten.length + "</p>";
-          	x++;
-        } 	
-    }
-    
-    prev.addEventListener("click", p);
-    function p() {
-        if (x == 0){
-            konten[x].style.display = "flex";
-        } else {
-            suaraKlik.play();
-          	audioMateri[x-1].play();
-          	audioMateri[x].pause();
-          	audioMateri[x].currentTime = 0;
-          	if (konten[x].style.height == "100vh") {
-            	konten[x-1].style.height = "100vh"
-            } else {
-            	konten[x-1].style.height = null
-            }
-            konten[x].style.display = "none";
-            konten[x-1].style.display = "flex";
-            halamanKe.innerHTML = "<p>" + x + "/" + konten.length + "</p>";
-          	x--;
-        }
-    }
+next.addEventListener("click", n);
+prev.addEventListener("click", p);
 
-    const dikt = document.getElementById("daftar-isi-kursus-tutup")
-    const bdi = document.getElementById("buka-daftar-isi")
-    const pdi = document.getElementById("penutup-daftar-isi")
+function n() {
+	if (x == y){
+    	konten[x].style.display = "flex";
+	} else {
+    	suaraKlik.play();
+	  	audioMateri[x+1].play();
+    	audioMateri[x].pause();
+	  	audioMateri[x].currentTime = 0;
+    	if (konten[x].style.height == "100vh") {
+    		konten[x+1].style.height = "100vh"
+		} else {
+    		konten[x+1].style.height = null
+		}
+		konten[x].style.display = "none";
+    	konten[x+1].style.display = "flex";
+    	halamanKe.innerHTML = "<p>" + (x+2) + "/" + konten.length + "</p>";
+    	x++;
+	} 	
+}
 
-    bdi.addEventListener("click", bukatutupdaftarisi)
-  	pdi.addEventListener("click", bukatutupdaftarisi)
+function p() {
+	if (x == 0){
+    	konten[x].style.display = "flex";
+	} else {
+    	suaraKlik.play();
+        audioMateri[x-1].play();
+        audioMateri[x].pause();
+        audioMateri[x].currentTime = 0;
+        if (konten[x].style.height == "100vh") {
+        	konten[x-1].style.height = "100vh"
+		} else {
+        	konten[x-1].style.height = null
+		}
+        konten[x].style.display = "none";
+        konten[x-1].style.display = "flex";
+        halamanKe.innerHTML = "<p>" + x + "/" + konten.length + "</p>";
+        x--;
+	}
+}
+
+//Buka Tutup Daftar Isi
+  
+bdi.addEventListener("click", bukatutupdaftarisi)
+pdi.addEventListener("click", bukatutupdaftarisi)
   
 function bukatutupdaftarisi(){
-        if (dikt.id == "daftar-isi-kursus-tutup"){
-            dikt.id = "daftar-isi-kursus-buka"
-        } else {
-            dikt.id = "daftar-isi-kursus-tutup"
-        }
-    }
+	if (dikt.id == "daftar-isi-kursus-tutup"){
+    	dikt.id = "daftar-isi-kursus-buka"
+	} else {
+    	dikt.id = "daftar-isi-kursus-tutup"
+	}
+}
