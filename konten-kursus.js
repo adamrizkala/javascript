@@ -38,47 +38,23 @@ function submenututup() {
 luasin.addEventListener("click", sempitin);
   
 //Ubah CSS Bawaaan
-  
-konten[x].style.height = "100vh";
-kepala.style.transform = "scaleY(0)";
-kepala.style.transformOrigin = "top";
-kepalaAnak.style.transform = "scaleY(0)";
-kepalaAnak.style.transformOrigin = "top";
-logo.style.transform = "scale(0)";
-logo.style.transformOrigin = "top";
-navigasi.style.transform = "scale(0)";
-navigasi.style.transformOrigin = "top";
-luasin.style.top = "2.5vh";
-luasin.className = "fa-solid fa-down-left-and-up-right-to-center";
-halamanKe.style.top = "2.5vh";
-judulKursus.style.top = "2.5vh";
-  
+ 
   
 function sempitin() {
 if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
-	konten[x].style.height = null;
-	kepala.style.transform = null;
-	kepalaAnak.style.transform = null;
-	logo.style.transform = null;
-	navigasi.style.transform = null;
-	luasin.style = null;
+	konten[x].style.height = "80vh";
+	kepala.style.transform = "scaleY(1)";
+	luasin.style.top = null;
 	luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
   	halamanKe.style.top = null;
 	judulKursus.style.top = null;
 } else {
-	konten[x].style.height = "100vh";
-	kepala.style.transform = "scaleY(0)";
-	kepala.style.transformOrigin = "top";
-	kepalaAnak.style.transform = "scaleY(0)";
-	kepalaAnak.style.transformOrigin = "top";
-	logo.style.transform = "scale(0)";
-	logo.style.transformOrigin = "top";
-	navigasi.style.transform = "scale(0)";
-	navigasi.style.transformOrigin = "top";
+	konten[x].style.height = null;
+	kepala.style.transform = null;
 	luasin.style.top = "2.5vh";
 	luasin.className = "fa-solid fa-down-left-and-up-right-to-center";
   	halamanKe.style.top = "2.5vh";
-	judulKursus.style.top = "2.5vh";
+	judulKursus.style.top = "2.5vh"; 
 }
 }
 
