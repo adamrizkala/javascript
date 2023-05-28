@@ -19,6 +19,7 @@ const y = konten.length - 1
 const dikt = document.getElementById("daftar-isi-kursus-tutup")
 const bdi = document.getElementById("buka-daftar-isi")
 const pdi = document.getElementById("penutup-daftar-isi")
+const fiturAtas = document.getElementById("fitur-atas")
 
 judulKursus.innerHTML = "<p>" + judul + "</p>"
 
@@ -44,17 +45,13 @@ function sempitin() {
 if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
 	konten[x].style.height = "80vh";
 	kepala.style.transform = "scaleY(1)";
-	luasin.style.top = null;
 	luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
-  	halamanKe.style.top = null;
-	judulKursus.style.top = null;
+	fiturAtas.style.top = "22vh";
 } else {
 	konten[x].style.height = null;
 	kepala.style.transform = null;
-	luasin.style.top = "2.5vh";
 	luasin.className = "fa-solid fa-down-left-and-up-right-to-center";
-  	halamanKe.style.top = "2.5vh";
-	judulKursus.style.top = "2.5vh"; 
+	fiturAtas.style.top = null;
 }
 }
 
