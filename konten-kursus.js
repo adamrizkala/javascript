@@ -20,6 +20,7 @@ const dikt = document.getElementById("daftar-isi-kursus-tutup")
 const bdi = document.getElementById("buka-daftar-isi")
 const pdi = document.getElementById("penutup-daftar-isi")
 const fiturAtas = document.getElementById("fitur-atas")
+const waktuAudioBiru = document.querySelectorAll(".waktu-audio-biru")
 
 judulKursus.innerHTML = "<p>" + judul + "</p>"
 
@@ -81,6 +82,7 @@ function n() {
 		konten[x].style.display = "none";
     	konten[x+1].style.display = "flex";
     	halamanKe.innerHTML = "<p>" + (x+2) + "/" + konten.length + "</p>";
+      	waktuAudioBiru[x+1].style.animationDuration = audioMateri[x+1].duration + "s"
     	x++;
 	} 	
 }
@@ -101,6 +103,7 @@ function p() {
         konten[x].style.display = "none";
         konten[x-1].style.display = "flex";
         halamanKe.innerHTML = "<p>" + x + "/" + konten.length + "</p>";
+		waktuAudioBiru[x-1].style.animationDuration = audioMateri[x-1].duration + "s"
         x--;
 	}
 }
