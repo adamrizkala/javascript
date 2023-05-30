@@ -21,6 +21,7 @@ const bdi = document.getElementById("buka-daftar-isi")
 const pdi = document.getElementById("penutup-daftar-isi")
 const fiturAtas = document.getElementById("fitur-atas")
 const waktuAudioBiru = document.querySelectorAll(".waktu-audio-biru")
+const waktuAudioBackground = document.querySelectorAll(".waktu-audio-background")
 
 judulKursus.innerHTML = "<p>" + judul + "</p>"
 
@@ -72,6 +73,7 @@ prev.addEventListener("click", p);
 function n() {
 	if (x == y){
     	konten[x].style.display = "flex";
+      	waktuAudioBackground[x].style.display = "grid";
 	} else {
     	suaraKlik.play();
 	  	audioMateri[x+1].play();
@@ -84,6 +86,8 @@ function n() {
 		}
 		konten[x].style.display = "none";
     	konten[x+1].style.display = "flex";
+      	waktuAudioBackground[x].style.display = "none";
+      	waktuAudioBackground[x+1].style.display = "grid";
     	halamanKe.innerHTML = "<p>" + (x+2) + "/" + konten.length + "</p>";
       	waktuAudioBiru[x+1].style.animationDuration = audioMateri[x+1].duration + "s"
     	x++;
@@ -93,6 +97,7 @@ function n() {
 function p() {
 	if (x == 0){
     	konten[x].style.display = "flex";
+      	waktuAudioBackground[x].style.display = "grid";
 	} else {
     	suaraKlik.play();
         audioMateri[x-1].play();
@@ -105,6 +110,8 @@ function p() {
 		}
         konten[x].style.display = "none";
         konten[x-1].style.display = "flex";
+      	waktuAudioBackground[x].style.display = "none";
+      	waktuAudioBackground[x-1].style.display = "grid";
         halamanKe.innerHTML = "<p>" + x + "/" + konten.length + "</p>";
 		waktuAudioBiru[x-1].style.animationDuration = audioMateri[x-1].duration + "s"
         x--;
