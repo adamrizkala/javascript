@@ -22,6 +22,7 @@ const pdi = document.getElementById("penutup-daftar-isi")
 const fiturAtas = document.getElementById("fitur-atas")
 const waktuAudioBiru = document.querySelectorAll(".waktu-audio-biru")
 const waktuAudioBackground = document.querySelectorAll(".waktu-audio-background")
+const documentElement = document.documentElement;
 
 judulKursus.innerHTML = "<p>" + judul + "</p>"
 
@@ -37,17 +38,27 @@ function submenututup() {
 }
   
 //Luasin & Sempitin
-
-luasin.addEventListener("click", sempitin);
   
-//Ubah CSS Bawaaan
+luasin.addEventListener("click", sempitin);
 
 function sempitin() {
 if (luasin.className == "fa-solid fa-expand") {
-  	document.documentElement.requestFullscreen();
+  	if (documentElement.requestFullscreen) {
+    	documentElement.requestFullscreen();
+  	} else if (documentElement.webkitRequestFullscreen) { /* Safari */
+    	documentElement.webkitRequestFullscreen();
+  	} else if (documentElement.msRequestFullscreen) { /* IE11 */
+    	documentElement.msRequestFullscreen();
+  	}
 	luasin.className = "fa-solid fa-down-left-and-up-right-to-center"; 
 } else if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
-  	document.exitFullscreen();
+  	if (document.exitFullscreen) {
+    	document.exitFullscreen();
+  	} else if (document.webkitExitFullscreen) { /* Safari */
+    	document.webkitExitFullscreen();
+  	} else if (document.msExitFullscreen) { /* IE11 */
+    	document.msExitFullscreen();
+  	}
 	konten[x].style.height = "80vh";
 	kepala.style.transform = "scaleY(1)";
 	luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
