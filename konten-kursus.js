@@ -40,10 +40,13 @@ function submenututup() {
 luasin.addEventListener("click", sempitin);
   
 //Ubah CSS Bawaaan
- 
-  
+
 function sempitin() {
-if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
+if (luasin.className == "fa-solid fa-expand") {
+  	document.documentElement.requestFullscreen();
+	luasin.className = "fa-solid fa-down-left-and-up-right-to-center"; 
+} else if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
+  	document.exitFullscreen();
 	konten[x].style.height = "80vh";
 	kepala.style.transform = "scaleY(1)";
 	luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
@@ -51,7 +54,7 @@ if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
 } else {
 	konten[x].style.height = null;
 	kepala.style.transform = null;
-	luasin.className = "fa-solid fa-down-left-and-up-right-to-center";
+	luasin.className = "fa-solid fa-expand";
 	fiturAtas.style.top = null;
 }
 }
