@@ -23,10 +23,29 @@ const fiturAtas = document.getElementById("fitur-atas")
 const waktuAudioBiru = document.querySelectorAll(".waktu-audio-biru")
 const waktuAudioBackground = document.querySelectorAll(".waktu-audio-background")
 const documentElement = document.documentElement;
+const pembukaDaftarSubBabKursus = document.getElementById('pembuka-daftar-sub-bab-kursus')
+const daftarSubBabKursus = document.getElementById('daftar-sub-bab-kursus-tutup')
+const faSolidFaAngleDown = document.getElementsByClassName('fa-solid fa-angle-down')
+
+// BUKA TUTUP DAFTAR SUB-BAB
+
+pembukaDaftarSubBabKursus.addEventListener('click', bukatutupdaftarsubbab)
+  
+function bukatutupdaftarsubbab(){
+	if (daftarSubBabKursus.id == "daftar-sub-bab-kursus-tutup"){
+    	daftarSubBabKursus.id = "daftar-sub-bab-kursus-buka"
+		faSolidFaAngleDown[0].style.transform = "rotate(-180deg)"
+	} else {
+    	daftarSubBabKursus.id = "daftar-sub-bab-kursus-tutup"
+		faSolidFaAngleDown[0].style.transform = "rotate(0deg)"
+	}
+}
+
+//JUDUL KURSUS
 
 judulKursus.innerHTML = "<p>" + judul + "</p>"
 
-//Buka Tutup Sub-Menu
+//BUKA TUTUP SUB-MENU
 
 pembukaSubMenu.addEventListener("click", submenubuka);
 function submenubuka() {
@@ -37,7 +56,7 @@ function submenututup() {
 	subMenu.id = "sub-menu-tutup";
 }
   
-//Luasin & Sempitin
+//FULLSCREEN
   
 luasin.addEventListener("click", sempitin);
 
@@ -71,7 +90,7 @@ if (luasin.className == "fa-solid fa-expand") {
 }
 }
 
-//Next & Prev
+//NEXT & PREV
     
 halamanKe.innerHTML = "<p>" + (x+1) + "/" + konten.length + "</p>";
 if (x == 1){
@@ -129,7 +148,7 @@ function p() {
 	}
 }
 
-//Buka Tutup Daftar Isi
+//BUKA TUTUP DAFTAR ISI/BAB KURSUS
   
 bdi.addEventListener("click", bukatutupdaftarisi)
 pdi.addEventListener("click", bukatutupdaftarisi)
