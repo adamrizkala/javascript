@@ -1,3 +1,5 @@
+const muteButton = document.querySelectorAll(".mute-audio")
+const logoVolume = document.querySelectorAll(".fa-volume-high");
 const judul = document.title;
 const judulKursus = document.getElementById("judul-kursus")
 const halamanKe = document.getElementById("halaman-ke");
@@ -26,6 +28,22 @@ const documentElement = document.documentElement;
 const pembukaDaftarSubBabKursus = document.getElementById('pembuka-daftar-sub-bab-kursus')
 const daftarSubBabKursus = document.getElementById('daftar-sub-bab-kursus-tutup')
 const faSolidFaAngleDown = document.getElementsByClassName('fa-solid fa-angle-down')
+
+// MUTE UNMUTE AUDIO
+
+for (let k = 0; k < muteButton.length; k++){
+muteButton[k].addEventListener('click', function() {
+    if (logoVolume[x].className == "fa-solid fa-volume-high" ) {
+        logoVolume[x].classList.remove("fa-volume-high");
+        logoVolume[x].classList.add("fa-volume-xmark");
+        audioMateri[x].muted = true;
+    } else {
+        logoVolume[x].classList.remove("fa-volume-xmark");
+        logoVolume[x].classList.add("fa-volume-high");
+        audioMateri[x].muted = false;
+    }
+});
+}
 
 // BUKA TUTUP DAFTAR SUB-BAB
 
