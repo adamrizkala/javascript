@@ -166,13 +166,20 @@ function p() {
 	}
 }
 
-//NEXT & PREV DENGAN KEYBOARD
+//KEYBOARD EVENT
 
 document.addEventListener("keydown", (event) => {
-    if (event.key == "ArrowRight") {
-      n();
-    } else if (event.key == "ArrowLeft"){
-      p();
+	const namaKey = event.key
+	const kodeKey = event.keyCode
+    
+	if (namaKey == "ArrowRight") {
+      		n();
+	} else if (namaKey == "ArrowLeft"){
+      		p();
+	} else if (kodeKey == 32){
+		bukatutupdaftarisi();	
+	} else {
+    	alert(`Petunjuk keyboard : [1] Tekan spasi untuk membuka navigasi. [2] Tekan arah kanan untuk menuju halaman berikutnya [3] Tekan arah kiri untuk menuju halaman sebelumnya.`)
     }
 });
 
