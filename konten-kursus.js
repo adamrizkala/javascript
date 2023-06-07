@@ -108,7 +108,7 @@ if (luasin.className == "fa-solid fa-expand") {
 }
 }
 
-//NEXT & PREV
+//NEXT & PREV DENGAN KLICK
     
 halamanKe.innerHTML = "<p>" + (x+1) + "/" + konten.length + "</p>";
 if (x == 1){
@@ -165,6 +165,16 @@ function p() {
         x--;
 	}
 }
+
+//NEXT & PREV DENGAN KEYBOARD
+
+document.addEventListener("keydown", (event) => {
+    if (event.key == "ArrowRight") {
+      n();
+    } else if (event.key == "ArrowLeft"){
+      p();
+    }
+});
 
 //BUKA TUTUP DAFTAR ISI/BAB KURSUS
   
