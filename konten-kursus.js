@@ -178,9 +178,9 @@ document.addEventListener("keydown", (event) => {
       		p();
 	} else if (kodeKey == 32){
 		bukatutupdaftarisi();	
-	} else {
-    	alert(`Petunjuk keyboard : [1] Tekan spasi untuk membuka navigasi. [2] Tekan arah kanan untuk menuju halaman berikutnya [3] Tekan arah kiri untuk menuju halaman sebelumnya.`)
-    }
+	} else if (namaKey == "Enter") {
+		closePetunjuk();
+	}
 });
 
 //BUKA TUTUP DAFTAR ISI/BAB KURSUS
