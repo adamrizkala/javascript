@@ -29,10 +29,13 @@ const pembukaDaftarSubBabKursus = document.getElementById('pembuka-daftar-sub-ba
 const daftarSubBabKursus = document.getElementById('daftar-sub-bab-kursus-tutup')
 const faSolidFaAngleDown = document.getElementsByClassName('fa-solid fa-angle-down')
 
-// MUTE UNMUTE AUDIO
+// MUTE & UNMUTE AUDIO
 
 for (let k = 0; k < muteButton.length; k++){
-muteButton[k].addEventListener('click', function() {
+	muteButton[k].addEventListener('click', audioMute)
+}
+
+function audioMute() {
     if (logoVolume[x].className == "fa-solid fa-volume-high" ) {
         logoVolume[x].classList.remove("fa-volume-high");
         logoVolume[x].classList.add("fa-volume-xmark");
@@ -42,7 +45,6 @@ muteButton[k].addEventListener('click', function() {
         logoVolume[x].classList.add("fa-volume-high");
         audioMateri[x].muted = false;
     }
-});
 }
 
 // BUKA TUTUP DAFTAR SUB-BAB
@@ -180,6 +182,8 @@ document.addEventListener("keydown", (event) => {
 		bukatutupdaftarisi();	
 	} else if (namaKey == "Enter") {
 		closePetunjuk();
+	} else if (namaKey == "m") {
+		audioMute();
 	}
 });
 
