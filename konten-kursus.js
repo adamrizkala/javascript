@@ -3,9 +3,6 @@ const logoVolume = document.querySelectorAll(".fa-volume-high");
 const judul = document.title;
 const judulKursus = document.getElementById("judul-kursus")
 const halamanKe = document.getElementById("halaman-ke");
-const subMenu = document.getElementById("sub-menu-tutup");
-const pembukaSubMenu = document.getElementById("pembuka-sub-menu");
-const penutupSubMenu = document.getElementById("penutup-sub-menu");
 const kepala = document.getElementById("kepala");
 const kepalaAnak = document.getElementById("kepala-anak");
 const logo = document.getElementById("logo");
@@ -64,17 +61,6 @@ function bukatutupdaftarsubbab(){
 //JUDUL KURSUS
 
 judulKursus.innerHTML = "<p>" + judul + "</p>"
-
-//BUKA TUTUP SUB-MENU
-
-pembukaSubMenu.addEventListener("click", submenubuka);
-function submenubuka() {
-	subMenu.id = "sub-menu-buka";
-}
-penutupSubMenu.addEventListener("click", submenututup);
-function submenututup() {
-	subMenu.id = "sub-menu-tutup";
-}
   
 //FULLSCREEN
   
