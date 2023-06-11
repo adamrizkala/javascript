@@ -1,4 +1,4 @@
-if (document.body.clientWidth > 769){
+if (document.body.clientWidth > 415){
 	document.writeln(`
   <div class="petunjuk-keyboard">
   <h1 style='color: #fff;'>Petunjuk Keyboard</h1>
