@@ -177,7 +177,7 @@ function p() {
     	konten[x].style.display = "flex";
 	} else {
     	suaraKlik.play();
-      	if (x > 2) {
+      	if (x > 1) {
         	audioMateri[x-1].play();
         }
         audioMateri[x].pause();
