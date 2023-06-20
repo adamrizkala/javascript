@@ -1,7 +1,7 @@
 if (document.body.clientWidth > 600){
 	document.writeln(`
   <div class="petunjuk-keyboard">
-  <h1 style='color: #fff;'>Petunjuk Keyboard</h1>
+  <h1 style='color: #fff;'>Pintasan Keyboard</h1>
   
   <div style='margin-bottom: 1em;'>
   <div style="display: flex;align-items: center;">1. Tekan <span style="border: 1px solid white; border-radius: 5px;  font-size: 10px;display: flex;height: 25px;justify-content: center;align-items: center;padding: 0 10px;margin: 0 1em;">Space</span> untuk membuka navigasi</div>
@@ -17,8 +17,9 @@ if (document.body.clientWidth > 600){
   
 const petunjukKeyboard = document.getElementsByClassName('petunjuk-keyboard')
 const keyboardOk = document.getElementById('keyboard-ok')
-  
-keyboardOk.addEventListener('click', closePetunjuk)
+if (document.body.clientWidth > 600){ 
+	keyboardOk.addEventListener('click', closePetunjuk)
+}
 function closePetunjuk(){
 	petunjukKeyboard[0].style.display = "none";
 }
