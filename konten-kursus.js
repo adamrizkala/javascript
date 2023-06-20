@@ -1,4 +1,4 @@
-const muteButton = document.querySelectorAll(".mute-audio")
+const muteButton = document.getElementById("mute-audio")
 const logoVolume = document.querySelectorAll(".fa-volume-high");
 const judul = document.title;
 const judulKursus = document.getElementById("judul-kursus")
@@ -18,29 +18,62 @@ const y = konten.length - 1
 const dikt = document.getElementById("daftar-isi-kursus-tutup")
 const bdi = document.getElementById("buka-daftar-isi")
 const pdi = document.getElementById("penutup-daftar-isi")
-const fiturAtas = document.getElementById("fitur-atas")
+const fiturAtasGrup = document.getElementById("fitur-atas-grup")
 const waktuAudioBiru = document.querySelectorAll(".waktu-audio-biru")
 const waktuAudioBackground = document.querySelectorAll(".waktu-audio-background")
 const documentElement = document.documentElement;
 const pembukaDaftarSubBabKursus = document.getElementById('pembuka-daftar-sub-bab-kursus')
 const daftarSubBabKursus = document.getElementById('daftar-sub-bab-kursus-tutup')
 const faSolidFaAngleDown = document.getElementsByClassName('fa-solid fa-angle-down')
+const prosesAnak = document.querySelectorAll('.proses-anak') 
+
+//FITUR PROGRESS HALAMAN DI ATAS
+  	
+  	const proses = document.getElementById('proses')
+	const perulanganIsiProses = function() {
+  		let isiProses = '';
+  		for (let prs = 0; prs < konten.length; prs++) {
+    		isiProses += `<span class="proses-anak-back"><span class="proses-anak"></span></span>`;
+  		}
+  		return isiProses;
+	};
+	
+	const perulanganStyleProses = function() {
+  		let styleProses = '';
+		for (let prs = 0; prs < konten.length; prs++) {
+    		styleProses += "1fr ";
+  		}
+		return styleProses.trim();
+	};
+
+
+	proses.innerHTML = perulanganIsiProses()
+	proses.style.gridTemplateColumns = perulanganStyleProses();
 
 // MUTE & UNMUTE AUDIO
 
-for (let k = 0; k < muteButton.length; k++){
-	muteButton[k].addEventListener('click', audioMute)
+muteButton.addEventListener('click', audioMute)
+
+function muteAudioMateri(){
+	for(let i = 0; i < audioMateri.length; i++){
+    	audioMateri[i].muted = true;
+    }
+}
+function unmuteAudioMateri(){
+	for(let i = 0; i < audioMateri.length; i++){
+    	audioMateri[i].muted = false;
+    }
 }
 
 function audioMute() {
-    if (logoVolume[x].className == "fa-solid fa-volume-high" ) {
-        logoVolume[x].classList.remove("fa-volume-high");
-        logoVolume[x].classList.add("fa-volume-xmark");
-        audioMateri[x].muted = true;
+    if (logoVolume[0].className == "fa-solid fa-volume-high" ) {
+        logoVolume[0].classList.remove("fa-volume-high");
+        logoVolume[0].classList.add("fa-volume-xmark");
+		muteAudioMateri();
     } else {
-        logoVolume[x].classList.remove("fa-volume-xmark");
-        logoVolume[x].classList.add("fa-volume-high");
-        audioMateri[x].muted = false;
+        logoVolume[0].classList.remove("fa-volume-xmark");
+        logoVolume[0].classList.add("fa-volume-high");
+        unmuteAudioMateri();
     }
 }
 
@@ -87,12 +120,12 @@ if (luasin.className == "fa-solid fa-expand") {
 	konten[x].style.height = "80vh";
 	kepala.style.transform = "scaleY(1)";
 	luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
-	fiturAtas.style.top = "22vh";
+	fiturAtasGrup.style.top = "20vh";
 } else {
 	konten[x].style.height = null;
 	kepala.style.transform = null;
 	luasin.className = "fa-solid fa-expand";
-	fiturAtas.style.top = null;
+	fiturAtasGrup.style.top = null;
 }
 }
 
@@ -105,14 +138,20 @@ if (x == 1){
   
 next.addEventListener("click", n);
 prev.addEventListener("click", p);
+  
+if (x == 0){
+	proses.childNodes[0].childNodes[0].style.width = "100%";
+	proses.childNodes[0].childNodes[0].style.animation = "9s waktu-audio-biru linear";
+}
 
 function n() {
 	if (x == y){
     	konten[x].style.display = "flex";
-      	waktuAudioBackground[x].style.display = "grid";
 	} else {
     	suaraKlik.play();
-	  	audioMateri[x+1].play();
+      	if (x < (konten.length - 2)){
+	  		audioMateri[x+1].play();
+        }
     	audioMateri[x].pause();
 	  	audioMateri[x].currentTime = 0;
     	if (konten[x].style.height == "100vh") {
@@ -122,10 +161,13 @@ function n() {
 		}
 		konten[x].style.display = "none";
     	konten[x+1].style.display = "flex";
-      	waktuAudioBackground[x].style.display = "none";
-      	waktuAudioBackground[x+1].style.display = "grid";
     	halamanKe.innerHTML = "<p>" + (x+2) + "/" + konten.length + "</p>";
-      	waktuAudioBiru[x+1].style.animationDuration = audioMateri[x+1].duration + "s"
+      	proses.childNodes[x+1].childNodes[0].style.animation = "waktu-audio-biru linear";
+      	proses.childNodes[x+1].childNodes[0].style.animationDuration = audioMateri[x+1].duration + "s";
+      	proses.childNodes[x+1].childNodes[0].style.width = "100%";
+      	proses.childNodes[x].childNodes[0].style.width = "100%";
+		proses.childNodes[x].childNodes[0].style.animation = "";
+      	proses.childNodes[x].childNodes[0].style.animationDuration = "";
     	x++;
 	} 	
 }
@@ -133,10 +175,11 @@ function n() {
 function p() {
 	if (x == 0){
     	konten[x].style.display = "flex";
-      	waktuAudioBackground[x].style.display = "grid";
 	} else {
     	suaraKlik.play();
-        audioMateri[x-1].play();
+      	if (x > 2) {
+        	audioMateri[x-1].play();
+        }
         audioMateri[x].pause();
         audioMateri[x].currentTime = 0;
         if (konten[x].style.height == "100vh") {
@@ -146,10 +189,17 @@ function p() {
 		}
         konten[x].style.display = "none";
         konten[x-1].style.display = "flex";
-      	waktuAudioBackground[x].style.display = "none";
-      	waktuAudioBackground[x-1].style.display = "grid";
         halamanKe.innerHTML = "<p>" + x + "/" + konten.length + "</p>";
-		waktuAudioBiru[x-1].style.animationDuration = audioMateri[x-1].duration + "s"
+		proses.childNodes[x-1].childNodes[0].style.animation = "waktu-audio-biru linear";
+      	proses.childNodes[x-1].childNodes[0].style.animationDuration = audioMateri[x-1].duration + "s";
+      	proses.childNodes[x-1].childNodes[0].style.width = "";
+      	if (x == 1){
+			proses.childNodes[0].childNodes[0].style.width = "100%";
+			proses.childNodes[0].childNodes[0].style.animation = "9s waktu-audio-biru linear";
+		}
+      	proses.childNodes[x].childNodes[0].style.width = "";
+		proses.childNodes[x].childNodes[0].style.animation = "";
+      	proses.childNodes[x].childNodes[0].style.animationDuration = "";
         x--;
 	}
 }
