@@ -192,7 +192,7 @@ function p() {
         halamanKe.innerHTML = "<p>" + x + "/" + konten.length + "</p>";
 		proses.childNodes[x-1].childNodes[0].style.animation = "waktu-audio-biru linear";
       	proses.childNodes[x-1].childNodes[0].style.animationDuration = audioMateri[x-1].duration + "s";
-      	proses.childNodes[x-1].childNodes[0].style.width = "";
+      	proses.childNodes[x-1].childNodes[0].style.width = "100%";
       	if (x == 1){
 			proses.childNodes[0].childNodes[0].style.width = "100%";
 			proses.childNodes[0].childNodes[0].style.animation = "9s waktu-audio-biru linear";
