@@ -25,7 +25,7 @@ const documentElement = document.documentElement;
 const pembukaDaftarSubBabKursus = document.getElementById('pembuka-daftar-sub-bab-kursus')
 const daftarSubBabKursus = document.getElementById('daftar-sub-bab-kursus-tutup')
 const faSolidFaAngleDown = document.getElementsByClassName('fa-solid fa-angle-down')
-const prosesAnak = document.querySelectorAll('.proses-anak') 
+const prosesAnak = document.querySelectorAll('.proses-anak')
 
 //FITUR PROGRESS HALAMAN DI ATAS
   	
@@ -33,7 +33,7 @@ const prosesAnak = document.querySelectorAll('.proses-anak')
 	const perulanganIsiProses = function() {
   		let isiProses = '';
   		for (let prs = 0; prs < konten.length; prs++) {
-    		isiProses += `<span class="proses-anak-back"><span class="proses-anak"></span></span>`;
+    		isiProses += `<span class="proses-anak-back"><span class="proses-anak"></span></span></span>`;
   		}
   		return isiProses;
 	};
@@ -49,6 +49,8 @@ const prosesAnak = document.querySelectorAll('.proses-anak')
 
 	proses.innerHTML = perulanganIsiProses()
 	proses.style.gridTemplateColumns = perulanganStyleProses();
+  	document.querySelectorAll('.proses-anak')[0].innerHTML = `<span class="proses-anak-panah"></span>`
+
 
 // MUTE & UNMUTE AUDIO
 
@@ -168,6 +170,8 @@ function n() {
       	proses.childNodes[x].childNodes[0].style.width = "100%";
 		proses.childNodes[x].childNodes[0].style.animation = "";
       	proses.childNodes[x].childNodes[0].style.animationDuration = "";
+      	document.querySelectorAll('.proses-anak')[x].innerHTML = `<span class=""></span>`
+      	document.querySelectorAll('.proses-anak')[x+1].innerHTML = `<span class="proses-anak-panah"></span>`
     	x++;
 	} 	
 }
@@ -200,6 +204,8 @@ function p() {
       	proses.childNodes[x].childNodes[0].style.width = "";
 		proses.childNodes[x].childNodes[0].style.animation = "";
       	proses.childNodes[x].childNodes[0].style.animationDuration = "";
+      	document.querySelectorAll('.proses-anak')[x].innerHTML = `<span class=""></span>`
+      	document.querySelectorAll('.proses-anak')[x-1].innerHTML = `<span class="proses-anak-panah"></span>`
         x--;
 	}
 }
