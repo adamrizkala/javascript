@@ -112,10 +112,14 @@ if (luasin.className == "fa-solid fa-expand") {
   	}
 	luasin.className = "fa-solid fa-down-left-and-up-right-to-center"; 
 } else {
-	konten[x].style.height = null;
-	kepala.style.transform = null;
+  	if (document.exitFullscreen) {
+    	document.exitFullscreen();
+  	} else if (document.webkitExitFullscreen) { /* Safari */
+    	document.webkitExitFullscreen();
+  	} else if (document.msExitFullscreen) { /* IE11 */
+    	document.msExitFullscreen();
+  	}
 	luasin.className = "fa-solid fa-expand";
-	fiturAtasGrup.style.top = null;
 }
 }
 
