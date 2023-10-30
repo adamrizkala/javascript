@@ -111,18 +111,6 @@ if (luasin.className == "fa-solid fa-expand") {
     	documentElement.msRequestFullscreen();
   	}
 	luasin.className = "fa-solid fa-down-left-and-up-right-to-center"; 
-} else if (luasin.className == "fa-solid fa-down-left-and-up-right-to-center") {
-  	if (document.exitFullscreen) {
-    	document.exitFullscreen();
-  	} else if (document.webkitExitFullscreen) { /* Safari */
-    	document.webkitExitFullscreen();
-  	} else if (document.msExitFullscreen) { /* IE11 */
-    	document.msExitFullscreen();
-  	}
-	konten[x].style.height = "80vh";
-	kepala.style.transform = "scaleY(1)";
-	luasin.className = "fa-solid fa-up-right-and-down-left-from-center";
-	fiturAtasGrup.style.top = "20vh";
 } else {
 	konten[x].style.height = null;
 	kepala.style.transform = null;
